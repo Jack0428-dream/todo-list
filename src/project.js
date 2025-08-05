@@ -1,24 +1,10 @@
-class Project {
-    constructor(name, category, priority, duedate, description, notes) {
-        this.name = name,
-        this.category = category,
-        this.priority = priority,
-        this.duedate = duedate,
-        this.description = description,
-        this.notes = notes;
-    }    
-}
-
 class General {
     cosntructor() {
         this.generallist = [];
+
     }
-    addGeneral(object) {
-        const generalcheck = object.category;
-        if (generalcheck === "general") {
-            console.log("This is"+generalcheck+" list")
-            this.generallist.push(object);
-        }
+    addGeneral(todos) {
+        this.generallist.push(todos);
     }
 
     getGeneral() {
@@ -31,12 +17,8 @@ class projectlist {
         this.projectlist = [];
     }
 
-    addPlist(object) {
-        const pListcheck = object.category;
-        if(pListcheck !== "general") {
-            console.log("This is not general list");
-            this.projectlist.push(object);
-        }
+    addPlist(todos) {
+        this.projectlist.push(todos);
     }
 
     getPlist() {
