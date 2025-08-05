@@ -10,12 +10,18 @@ class Project {
 }
 
 class General {
+    cosntructor(generallist) {
+        this.generallist = generallist;
+    }
     showingGeneral(object) {
         const generalcheck = object.category;
         if (generalcheck === "general") {
             console.log("This is"+generalcheck+" list")
-            return object;
+            this.generallist = object;
         }
     }
 }
 
+class projectlist {
+
+}
