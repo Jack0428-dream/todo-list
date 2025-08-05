@@ -10,18 +10,40 @@ class Project {
 }
 
 class General {
-    cosntructor(generallist) {
-        this.generallist = generallist;
+    cosntructor() {
+        this.generallist = [];
     }
-    showingGeneral(object) {
+    addGeneral(object) {
         const generalcheck = object.category;
         if (generalcheck === "general") {
             console.log("This is"+generalcheck+" list")
-            this.generallist = object;
+            this.generallist.push(object);
         }
+    }
+
+    getGeneral() {
+        return this.generallist;
     }
 }
 
 class projectlist {
+    constructor() {
+        this.projectlist = [];
+    }
 
+    addPlist(object) {
+        const pListcheck = object.category;
+        if(pListcheck !== "general") {
+            console.log("This is not general list");
+            this.projectlist.push(object);
+        }
+    }
+
+    getPlist() {
+        return this.projectlist;
+    }
+
+    deletePlist(index) {
+        this.projectlist.splice(index, 1);
+    }
 }
