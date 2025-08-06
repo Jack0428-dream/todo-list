@@ -1,10 +1,10 @@
 class General {
     cosntructor() {
-        this.generallist = [];
+        this.generaltodos = [];
 
     }
     addGeneral(todos) {
-        this.generallist.push(todos);
+        this.generaltodos.push(todos);
     }
 
     getGeneral() {
