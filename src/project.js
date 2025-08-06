@@ -12,20 +12,31 @@ class General {
     }
 }
 
-class projectlist {
-    constructor() {
-        this.projectlist = [];
+class project {
+    constructor(name) {
+        this.name = name,
+        this.todos = [];
     }
 
-    addPlist(todos) {
-        this.projectlist.push(todos);
+    addTodos(todos) {
+        this.todos.push(todos);
     }
 
     getPlist() {
-        return this.projectlist;
+        return this.todos;
+    }
+}
+
+class projectList {
+    constructor() {
+        this.projectList = [];
     }
 
-    deletePlist(index) {
-        this.projectlist.splice(index, 1);
+    addProect(project) {
+        this.projectList.push(project);
+    }
+
+    deleteProject(index) {
+        this.projectList.splice(index, 1);
     }
 }
