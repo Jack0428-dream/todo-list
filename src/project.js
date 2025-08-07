@@ -13,8 +13,9 @@ class General {
 }
 
 class project {
-    constructor(name) {
-        this.name = name,
+    constructor(title, deadline) {
+        this.title = title,
+        this.deadline = deadline,
         this.todos = [];
     }
 
