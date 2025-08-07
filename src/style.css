@@ -15,65 +15,7 @@ body{
     padding: 0;
 }
 
-#sidebar {
-    display: grid;
-    grid-template-rows: 2fr 1fr 1fr 6fr;
-}
-
-.title {
-    background-color: red;
-    font-size: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.pcontainer {
-    background-color: orange;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.project, .general {
-    position: relative;
-    right: 15px;
-}
-
-.plusbox, .plusbox2 {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    left: 10px;
-}
-
-.plusbox:hover, .plusbox2:hover {
-    fill: aquamarine;
-}
-
-.gcontainer {
-    background-color: yellow;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.plists {
-    text-align: center;
-    padding-top: 5px;
-    background-color: green;
-    font-size: 30px;
-}
-
-.container { 
-    display: grid;
-    grid-template-rows: 100px;
-    width: 100%;
-    height: 100%;
-}
-
+/* header styling */
 #header{
     background-color: wheat;
     font-family: 'amatics';
@@ -85,6 +27,7 @@ body{
     align-items: center;
 }
 
+/* content styling */
 #content {
     background-color: bisque;
 }

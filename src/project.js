@@ -12,7 +12,7 @@ class General {
     }
 }
 
-class project {
+class Project {
     constructor(title, deadline) {
         this.title = title,
         this.deadline = deadline,
@@ -33,7 +33,7 @@ class projectList {
         this.projectList = [];
     }
 
-    addProect(project) {
+    addProject(project) {
         this.projectList.push(project);
     }
 
@@ -41,3 +41,5 @@ class projectList {
         this.projectList.splice(index, 1);
     }
 }
+
+export { General, Project, projectList}
