@@ -11,10 +11,60 @@ body{
     width: 100vw;
     height: 100vh;
     grid-template-columns: 1fr 3fr;
+    margin: 0;
+    padding: 0;
 }
 
 #sidebar {
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr 6fr;
+}
+
+.title {
     background-color: red;
+    font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pcontainer {
+    background-color: orange;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.project, .general {
+    position: relative;
+    right: 15px;
+}
+
+.plusbox, .plusbox2 {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: 10px;
+}
+
+.plusbox:hover, .plusbox2:hover {
+    fill: aquamarine;
+}
+
+.gcontainer {
+    background-color: yellow;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plists {
+    text-align: center;
+    padding-top: 5px;
+    background-color: green;
+    font-size: 30px;
 }
 
 .container { 
