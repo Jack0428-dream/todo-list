@@ -30,4 +30,4 @@ function showingaffirmations() {
     return affirmations[number];
 }
 
-// console.log(showingaffirmations());
+export { showingaffirmations };
