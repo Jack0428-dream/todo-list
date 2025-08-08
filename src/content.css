@@ -1,0 +1,41 @@
+#content {
+    display: flex;
+    justify-content: center;
+}
+
+.todo {
+    display: flex;
+    margin-top: 20px;
+    border: #ffffff solid 8px;
+    border-radius: 10px;
+    width: 95%;
+    height: 60px;
+}
+
+.todo > div {
+    background-color: aqua;
+    width: 90%;
+    height: 50px;
+    align-self: center;
+}
+
+.detail {
+    display: flex;
+    background-image: url(./assets/plus-box-multiple.svg);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    align-self: center;
+
+}
+
+.delbox {
+    display: flex;
+    background-image: url(./assets/close-box-multiple.svg);
+    background-repeat: no-repeat;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    align-self: center;
+}   

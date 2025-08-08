@@ -1,7 +1,6 @@
 class todolist {
-    constructor(name, category, priority, duedate, description, notes) {
+    constructor(name, priority, duedate, description, notes) {
         this.name = name,
-        this.category = category,
         this.priority = priority,
         this.duedate = duedate,
         this.description = description,
