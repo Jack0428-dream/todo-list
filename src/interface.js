@@ -65,10 +65,11 @@ const titleIn = document.querySelector("#title");
 const deadlineIn = document.querySelector("#deadline");
 
 const add = document.querySelector("#add");
+const nPlist = new projectList();
+
 add.addEventListener("click", () => {
     const newProject = new Project(titleIn.value, deadlineIn.value);
 
-    const nPlist = new projectList();
     nPlist.addProject(newProject);
 
     const nplist = document.createElement("div");
@@ -82,6 +83,29 @@ add.addEventListener("click", () => {
     nplist.appendChild(pbtn1);
     nplist.appendChild(pbtn2);
 
+    //showing todo list & deleting project list
+
+    // showing todo list 
+    // pbtn1.addEventListener("click", () => {
+
+    // })
+
+
+    pbtn2.addEventListener("click", () => {
+        // delete div (interface)
+        const parDiv = pbtn2.parentNode;
+
+        // delete the data inside the array
+        let number = nPlist.projectList.findIndex(item =>(item.title + ', '+item.deadline) === parDiv.textContent)
+        // console.log(number);
+        nPlist.deleteProject(number);
+
+        pLists.removeChild(parDiv);
+        // console.log(nPlist.projectList);
+    })
+
     titleIn.value = "";
     deadlineIn.value = "";
+    dialog.close();
+    // console.log(nPlist.projectList);
 })

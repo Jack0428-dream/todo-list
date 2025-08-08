@@ -70,20 +70,36 @@
 }
 
 .plists > div {
+    display: flex;
+    justify-content: center;
     font-size: 0.75em;
     margin: 5px;
 }
 
 .pbtn1 {
+    display: flex;
+    position: relative;
+    margin-left: 8px;
+    bottom: 2px;
     background-image: url(./assets/plus-box-multiple.svg);
-    background-image: cover;
+    background-repeat: no-repeat;
     width: 30px;
     height: 30px;
+    border-radius: 5px;
 }
 
 .pbtn2 {
+    display: flex;
+    position: relative;
+    margin-left: 5px;
+    bottom: 2px;
     background-image: url(./assets/close-box-multiple.svg);
-    background-image: cover;
-    width: 100px;
+    background-repeat: no-repeat;
+    width: 30px;
     height: 30px;
+    border-radius: 5px;
+}
+
+.pbtn1:hover, .pbtn2:hover {
+    background-color: aqua;
 }
