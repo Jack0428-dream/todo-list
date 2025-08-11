@@ -9,8 +9,27 @@ function todoBox() {
     const tdContent = document.createElement("div");
     tdContent.classList.add("td"+num);
 
+    const id = "cb5"+num;
+
     const chbox = document.createElement("span");
-    chbox.classList.add("chbox");
+    chbox.classList.add("checkbox-wrapper-10");
+    
+    const checkbox = document.createElement("input");
+    checkbox.classList.add("tgl", "tgl-flip");
+    checkbox.setAttribute("id", id);
+    checkbox.setAttribute('type','checkbox');
+    checkbox.setAttribute('name', 'check');
+
+    const label = document.createElement("label");
+    label.classList.add("tgl-btn");
+    label.setAttribute('data-tg-off', "Nope");
+    label.setAttribute('data-tg-on', 'Done!');
+    label.setAttribute('for', id);
+    chbox.appendChild(checkbox);
+    chbox.appendChild(label);
+
+
+
     const detail = document.createElement("span");
     detail.classList.add("detail");
     const delBox = document.createElement("span");
@@ -43,9 +62,11 @@ function tdContent() {
     const todoCon = document.querySelector('.td'+(clnum-1));
     todoCon.textContent = nameIn.value + ", " + dueIn.value + ", Prority:" + priorIn.value;
 }
+
+
+
+
 // control the textbox that will contain the information of todo
-
-
 
 todoBox();
 
