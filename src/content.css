@@ -1,6 +1,7 @@
 #content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .todo {
@@ -13,10 +14,29 @@
 }
 
 .todo > div {
-    background-color: aqua;
+    margin-left: 15px;
     width: 90%;
     height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     align-self: center;
+    font-size: 2em;
+}
+
+.cpbtn {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    background-image: url(./assets/plus-circle-outline.svg);
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+}
+
+.cpbtn:hover {
+    background-color: aquamarine;
 }
 
 .detail {
@@ -27,7 +47,7 @@
     height: 30px;
     border-radius: 5px;
     align-self: center;
-
+    margin-left: 20px;
 }
 
 .delbox {
@@ -39,3 +59,19 @@
     border-radius: 5px;
     align-self: center;
 }   
+
+.delbox:hover, .detail:hover {
+    background-color: aqua;
+}
+
+/* Todo dialog styling */
+.tdialog {
+    border-radius: 10px;
+}
+
+.tdfield {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 500px;
+}

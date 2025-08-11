@@ -22,3 +22,4 @@ class todolist {
         todolist.splice(index, 1);
     }
 }
+
