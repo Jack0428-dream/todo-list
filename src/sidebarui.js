@@ -1,5 +1,6 @@
-import { showingaffirmations } from "./affirmation";
-import { General, Project, projectList } from "./project";
+import { showingaffirmations } from "./affirmation.js";
+import { Project, projectList } from "./project.js";
+import { content, num, todoBox, inputNodes, tdContent, eventHandler } from "./contentui.js"
 
 // header 
 // showing affirmation
@@ -86,9 +87,14 @@ add.addEventListener("click", () => {
     //showing todo list & deleting project list
 
     // showing todo list 
-    // pbtn1.addEventListener("click", () => {
+    pbtn1.addEventListener("click", () => {
+        
+        content.innerHTML = "";
+        let num = 0;
+        todoBox();
 
-    // })
+        eventHandler();
+    })
 
 
     pbtn2.addEventListener("click", () => {
@@ -108,4 +114,15 @@ add.addEventListener("click", () => {
     deadlineIn.value = "";
     dialog.close();
     // console.log(nPlist.projectList);
+})
+
+const gnbtn = document.querySelector(".plusbox2");
+
+gnbtn.addEventListener("click", () => {
+
+    content.innerHTML = "";
+    let num = 0;
+    todoBox();
+
+    eventHandler();
 })

@@ -13,7 +13,7 @@ function todoBox() {
 
     const chbox = document.createElement("span");
     chbox.classList.add("checkbox-wrapper-10");
-    
+
     const checkbox = document.createElement("input");
     checkbox.classList.add("tgl", "tgl-flip");
     checkbox.setAttribute("id", id);
@@ -46,54 +46,87 @@ function todoBox() {
     todo.appendChild(delBox);
 
     num ++;
-    console.log(num);
+    deleteTodo();
+    // console.log(num);
 
     return num
 }   
 
-const nameIn = document.querySelector("#name");
-const priorIn = document.querySelector("#priority");
-const dueIn = document.querySelector("#duedate");
-const desIn = document.querySelector("#description");
-const notesIn = document.querySelector("#notes");
+function inputNodes() {
+    const nameIn = document.querySelector("#name");
+    const priorIn = document.querySelector("#priority");
+    const dueIn = document.querySelector("#duedate");
+    const desIn = document.querySelector("#description");
+    const notesIn = document.querySelector("#notes");
+
+    const nmIV = nameIn.value;
+    const prIV = priorIn.value;
+    const duIV = dueIn.value;
+    const deIV = desIn.value;
+    const ntIV = notesIn.value;
+
+    return { nmIV, prIV, duIV, deIV, ntIV };
+}
+
+const inNodes = inputNodes();
 
 function tdContent() {
     let clnum = todoBox();
     const todoCon = document.querySelector('.td'+(clnum-1));
-    todoCon.textContent = nameIn.value + ", " + dueIn.value + ", Prority:" + priorIn.value;
+    todoCon.textContent = inNodes.nmIV + ", " + inNodes.duIV + ", Prority:" + inNodes.prIV;
 }
 
-
-
-
 // control the textbox that will contain the information of todo
-
 todoBox();
 
 // showing todo dialog
-const tdialog = document.querySelector(".tdialog");
-const addTd = document.querySelector(".cpbtn");
+function eventHandler() {
+    const tdialog = document.querySelector(".tdialog");
+    const addTd = document.querySelector(".cpbtn");
+    const close2 = document.querySelector(".close2");
+    const plusTodo = document.querySelector("#plus");
 
-addTd.addEventListener("click", () => {
-    tdialog.showModal();
-})
+    addTd.addEventListener("click", () => {
+        tdialog.showModal();
+    })
 
-// closing todo dialog
-const close2 = document.querySelector(".close2");
-close2.addEventListener("click", () => {
-    tdialog.close();
-})
+    // closing todo dialog
+    close2.addEventListener("click", () => {
+        tdialog.close();
+    })
 
-// adding information of todo
-const plusTodo = document.querySelector("#plus");
-plusTodo.addEventListener("click", () => { 
-    tdContent();
+    // adding information of todo
+    plusTodo.addEventListener("click", () => { 
+        tdContent();
 
-    nameIn.value = "";
-    priorIn.value = "";
-    dueIn.value = "";
-    desIn.value = "";
-    notesIn.value = "";
+        inNodes.nmIV = "";
+        inNodes.prIV = "";
+        inNodes.duIV = "";
+        inNodes.deIV = "";
+        inNodes.ntIV = "";
 
-    tdialog.close();
-})
+        tdialog.close();
+    })
+
+
+}
+
+eventHandler();
+
+// function showingDetail() {
+//     const dtlbtn = document.querySelector(".detail");
+
+
+// }
+
+// function deleteTodo() {
+//     const delbtn = document.querySelector(".delbox");
+
+//     const parDiv = delbtn.parentNode;
+    
+//     delbtn.addEventListener("click", () => {
+//         content.removeChild(parDiv);
+//     })
+// }
+
+export { content, num, todoBox, inputNodes, tdContent, eventHandler };

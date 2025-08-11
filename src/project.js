@@ -42,4 +42,4 @@ class projectList {
     }
 }
 
-export { General, Project, projectList}
+export { General, Project, projectList }

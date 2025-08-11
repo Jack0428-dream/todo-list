@@ -58,6 +58,7 @@
     height: 30px;
     border-radius: 5px;
     align-self: center;
+    margin-right: 10px;
 }   
 
 .delbox:hover, .detail:hover {
