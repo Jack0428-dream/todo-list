@@ -1,19 +1,20 @@
 /* sidebar styling */
 #sidebar {
+    background-color: antiquewhite;
     display: grid;
     grid-template-rows: 2fr 1fr 1fr 6fr;
 }
 
 .title {
-    background-color: red;
     font-size: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 5px solid black;
 }
 
 .pcontainer {
-    background-color: orange;
+    border-bottom: 2px solid black;
     font-size: 30px;
     display: flex;
     justify-content: center;
@@ -37,7 +38,7 @@
 }
 
 .gcontainer {
-    background-color: yellow;
+    border-bottom: 2px solid black;
     font-size: 30px;
     display: flex;
     justify-content: center;
@@ -47,7 +48,6 @@
 .plists {
     text-align: center;
     padding-top: 5px;
-    background-color: green;
     font-size: 30px;
 }
 
