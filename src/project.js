@@ -7,8 +7,8 @@ class General {
         this.generaltodos.push(todos);
     }
 
-    getGeneral() {
-        return this.generallist;
+    deleteGeneral(index) {
+        this.generaltodos.splice(index, 1);
     }
 }
 
@@ -23,8 +23,8 @@ class Project {
         this.todos.push(todos);
     }
 
-    getPlist() {
-        return this.todos;
+    deleteTodos(index) {
+        this.todos.splice(index, 1);
     }
 }
 

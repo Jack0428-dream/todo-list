@@ -13,3 +13,4 @@ class todolist {
     }
 }
 
+export { todolist }

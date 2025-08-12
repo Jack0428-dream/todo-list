@@ -1,6 +1,7 @@
+import { todolist } from "./todo_list.js";
 import { showingaffirmations } from "./affirmation.js";
-import { Project, projectList } from "./project.js";
-import { content, num, todoBox, inputNodes, tdContent, eventHandler } from "./contentui.js"
+import { General, Project, projectList } from "./project.js";
+import { Content } from "./contentui.js"
 
 // header 
 // showing affirmation
@@ -68,6 +69,12 @@ const deadlineIn = document.querySelector("#deadline");
 const add = document.querySelector("#add");
 const nPlist = new projectList();
 
+// const nameIn = document.querySelector("#name");
+// const priorIn = document.querySelector("#priority");
+// const dueIn = document.querySelector("#duedate");
+// const desIn = document.querySelector("#description");
+// const notesIn = document.querySelector("#notes");
+
 add.addEventListener("click", () => {
     const newProject = new Project(titleIn.value, deadlineIn.value);
 
@@ -85,15 +92,18 @@ add.addEventListener("click", () => {
     nplist.appendChild(pbtn2);
 
     //showing todo list & deleting project list
-
     // showing todo list 
     pbtn1.addEventListener("click", () => {
-        
-        content.innerHTML = "";
-        let num = 0;
-        todoBox();
+        // Pl Content UI
+        const plContent = new Content();
+        const plCui = plContent.contentUi();
+        plContent.todoBox(plCui);
+        const plNds = plContent.inputNodes();
+        plContent.eventHandler(plContent, plCui, plNds);
 
-        eventHandler();
+        // // Saving Plinfo
+        // const plTodo = new todolist(nameIn.value, priorIn.value, dueIn.value, desIn.value, notesIn.value);
+        // newProject.addTodos(plTodo);
     })
 
 
@@ -117,12 +127,17 @@ add.addEventListener("click", () => {
 })
 
 const gnbtn = document.querySelector(".plusbox2");
+const gnList = new General();
 
 gnbtn.addEventListener("click", () => {
+    // general Content UI
+    const gnContent = new Content();
+    const gnCui = gnContent.contentUi();
+    gnContent.todoBox(gnCui);
+    const gnNds = gnContent.inputNodes();
+    gnContent.eventHandler(gnContent, gnCui, gnNds);
 
-    content.innerHTML = "";
-    let num = 0;
-    todoBox();
-
-    eventHandler();
+    // // Saving Gninfo 
+    // const gnTodo = new todolist(nameIn.value, priorIn.value, dueIn.value, desIn.value, notesIn.value);
+    // gnList.addGeneral(gnTodo);
 })
