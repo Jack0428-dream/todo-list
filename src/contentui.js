@@ -1,3 +1,5 @@
+import { todolist } from "./todo_list";
+
 class Content {
     
     contentUi() {
@@ -75,7 +77,7 @@ class Content {
     }
 
     // showing todo dialog
-    eventHandler(cls, uiObj, nds, Todo) {
+    eventHandler(cls, uiObj, nds, tdList) {
         const tdialog = document.querySelector(".tdialog");
         const addTd = document.querySelector(".cpbtn");
         const close2 = document.querySelector(".close2");
@@ -93,6 +95,8 @@ class Content {
         // adding information of todo
         plusTodo.addEventListener("click", () => { 
             cls.tdContent(cls, uiObj, nds);
+            const todo = new todolist(nds.nameIn.value, nds.priorIn.value, nds.dueIn.value, nds.desIn.value, nds.notesIn.value);
+            tdList.addTodos(todo);
 
             nds.nameIn.value = "";
             nds.priorIn.value = "";

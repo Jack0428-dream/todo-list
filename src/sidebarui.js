@@ -99,7 +99,7 @@ add.addEventListener("click", () => {
         const plCui = plContent.contentUi();
         plContent.todoBox(plCui);
         const plNds = plContent.inputNodes();
-        plContent.eventHandler(plContent, plCui, plNds);
+        plContent.eventHandler(plContent, plCui, plNds, newProject);
 
         // // Saving Plinfo
         // const plTodo = new todolist(nameIn.value, priorIn.value, dueIn.value, desIn.value, notesIn.value);
@@ -135,7 +135,7 @@ gnbtn.addEventListener("click", () => {
     const gnCui = gnContent.contentUi();
     gnContent.todoBox(gnCui);
     const gnNds = gnContent.inputNodes();
-    gnContent.eventHandler(gnContent, gnCui, gnNds);
+    gnContent.eventHandler(gnContent, gnCui, gnNds, gnList);
 
     // // Saving Gninfo 
     // const gnTodo = new todolist(nameIn.value, priorIn.value, dueIn.value, desIn.value, notesIn.value);

@@ -3,11 +3,11 @@ class General {
         this.generaltodos = [];
 
     }
-    addGeneral(todos) {
+    addTodos(todos) {
         this.generaltodos.push(todos);
     }
 
-    deleteGeneral(index) {
+    deleteTodos(index) {
         this.generaltodos.splice(index, 1);
     }
 }
