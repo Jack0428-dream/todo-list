@@ -1,14 +1,14 @@
 class General {
-    cosntructor() {
-        this.generaltodos = [];
-
+    constructor() {
+        this.todos = [];
     }
-    addTodos(todos) {
-        this.generaltodos.push(todos);
+
+    addTodos(todo) { 
+        this.todos.push(todo);
     }
 
     deleteTodos(index) {
-        this.generaltodos.splice(index, 1);
+        this.todos.splice(index, 1);
     }
 }
 
@@ -19,8 +19,8 @@ class Project {
         this.todos = [];
     }
 
-    addTodos(todos) {
-        this.todos.push(todos);
+    addTodos(todo) {
+        this.todos.push(todo);
     }
 
     deleteTodos(index) {

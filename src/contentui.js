@@ -1,7 +1,6 @@
 import { todolist } from "./todo_list";
 
 class Content {
-    
     contentUi() {
         const content = document.querySelector("#content");
 
@@ -10,7 +9,7 @@ class Content {
         return { content, num };
     }
 
-    todoBox(uiObj) {
+    todoBox(uiObj, tdList) {
         const todo = document.createElement("div");
         todo.classList.add("todo");
 
@@ -40,8 +39,19 @@ class Content {
 
         const detail = document.createElement("span");
         detail.classList.add("detail");
+
         const delBox = document.createElement("span");
         delBox.classList.add("delbox");
+        delBox.addEventListener("click", () => {
+            const pardiv = delBox.parentNode;
+            uiObj.content.removeChild(pardiv);
+
+            const chidiv = pardiv.querySelector("div");
+            console.log("tdList is", tdList);
+            console.log("This is", this);
+            let number = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent) )
+            tdList.deleteTodos(number);
+        })
 
         const cpbtn = document.createElement("div");
         cpbtn.classList.add("cpbtn");
@@ -70,8 +80,8 @@ class Content {
         return { nameIn, priorIn, dueIn, desIn, notesIn };
     }
 
-    tdContent(cls, uiObj, nds) {
-        let clnum = cls.todoBox(uiObj);
+    tdContent(cls, uiObj, nds, tdList) {
+        let clnum = cls.todoBox(uiObj, tdList);
         const todoCon = document.querySelector('.td'+(clnum-1));
         todoCon.textContent = nds.nameIn.value+ ", " + nds.dueIn.value + ", Prority:" + nds.priorIn.value;
     }
@@ -94,7 +104,7 @@ class Content {
 
         // adding information of todo
         plusTodo.addEventListener("click", () => { 
-            cls.tdContent(cls, uiObj, nds);
+            cls.tdContent(cls, uiObj, nds, tdList);
             const todo = new todolist(nds.nameIn.value, nds.priorIn.value, nds.dueIn.value, nds.desIn.value, nds.notesIn.value);
             tdList.addTodos(todo);
 
@@ -106,10 +116,11 @@ class Content {
 
             tdialog.close();
         })
-
-
     }
 
+    // detail() {
+
+    // }
 }
 
 export { Content };

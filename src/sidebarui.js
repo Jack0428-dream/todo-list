@@ -1,4 +1,3 @@
-import { todolist } from "./todo_list.js";
 import { showingaffirmations } from "./affirmation.js";
 import { General, Project, projectList } from "./project.js";
 import { Content } from "./contentui.js"
@@ -95,9 +94,11 @@ add.addEventListener("click", () => {
     // showing todo list 
     pbtn1.addEventListener("click", () => {
         // Pl Content UI
+
         const plContent = new Content();
+        plContent.contentUi.content.textContent = "";
         const plCui = plContent.contentUi();
-        plContent.todoBox(plCui);
+        plContent.todoBox(plCui, newProject);
         const plNds = plContent.inputNodes();
         plContent.eventHandler(plContent, plCui, plNds, newProject);
 
@@ -128,16 +129,15 @@ add.addEventListener("click", () => {
 
 const gnbtn = document.querySelector(".plusbox2");
 const gnList = new General();
+const gnContent = new Content();
 
 gnbtn.addEventListener("click", () => {
     // general Content UI
-    const gnContent = new Content();
+    // const close = document.querySelector("#content");
+    // close.innerHTML = "";
     const gnCui = gnContent.contentUi();
-    gnContent.todoBox(gnCui);
+    gnContent.todoBox(gnCui, gnList);
     const gnNds = gnContent.inputNodes();
     gnContent.eventHandler(gnContent, gnCui, gnNds, gnList);
-
-    // // Saving Gninfo 
-    // const gnTodo = new todolist(nameIn.value, priorIn.value, dueIn.value, desIn.value, notesIn.value);
-    // gnList.addGeneral(gnTodo);
 })
+

@@ -1,6 +1,7 @@
 /* sidebar styling */
 #sidebar {
     background-color: antiquewhite;
+    border-right: 5px solid black;
     display: grid;
     grid-template-rows: 2fr 1fr 1fr 6fr;
 }
