@@ -35,10 +35,24 @@ class Content {
         chbox.appendChild(checkbox);
         chbox.appendChild(label);
 
-
-
         const detail = document.createElement("span");
         detail.classList.add("detail");
+        detail.addEventListener("click", () => {
+            const dename = document.querySelector(".dename");
+            const deprior = document.querySelector(".deprior");
+            const dedue = document.querySelector(".dedue");
+            const dedes = document.querySelector(".dedes");
+            const denote = document.querySelector(".denote");
+            const pardiv = delBox.parentNode;
+            const chidiv = pardiv.querySelector("div");
+            let number = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent) )
+
+            dename.textContent = tdList.todos[number].name;
+            deprior.textContent = tdList.todos[number].priority
+            dedue.textContent = tdList.todos[number].duedate
+            dedes.textContent = tdList.todos[number].description
+            denote.textContent = tdList.todos[number].notes
+        })
 
         const delBox = document.createElement("span");
         delBox.classList.add("delbox");
@@ -47,8 +61,6 @@ class Content {
             uiObj.content.removeChild(pardiv);
 
             const chidiv = pardiv.querySelector("div");
-            console.log("tdList is", tdList);
-            console.log("This is", this);
             let number = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent) )
             tdList.deleteTodos(number);
         })

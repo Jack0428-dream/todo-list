@@ -94,9 +94,7 @@ add.addEventListener("click", () => {
     // showing todo list 
     pbtn1.addEventListener("click", () => {
         // Pl Content UI
-
         const plContent = new Content();
-        plContent.contentUi.content.textContent = "";
         const plCui = plContent.contentUi();
         plContent.todoBox(plCui, newProject);
         const plNds = plContent.inputNodes();
@@ -133,8 +131,6 @@ const gnContent = new Content();
 
 gnbtn.addEventListener("click", () => {
     // general Content UI
-    // const close = document.querySelector("#content");
-    // close.innerHTML = "";
     const gnCui = gnContent.contentUi();
     gnContent.todoBox(gnCui, gnList);
     const gnNds = gnContent.inputNodes();
