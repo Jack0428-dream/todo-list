@@ -35,23 +35,34 @@ class Content {
         chbox.appendChild(checkbox);
         chbox.appendChild(label);
 
+        // nodes for detailbox
+        const dename = document.querySelector(".dename");
+        const deprior = document.querySelector(".deprior");
+        const dedue = document.querySelector(".dedue");
+        const dedes = document.querySelector(".dedes");
+        const denote = document.querySelector(".denote");
+
         const detail = document.createElement("span");
         detail.classList.add("detail");
         detail.addEventListener("click", () => {
-            const dename = document.querySelector(".dename");
-            const deprior = document.querySelector(".deprior");
-            const dedue = document.querySelector(".dedue");
-            const dedes = document.querySelector(".dedes");
-            const denote = document.querySelector(".denote");
-            const pardiv = delBox.parentNode;
-            const chidiv = pardiv.querySelector("div");
-            let number = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent) )
+            const detbox = document.querySelector(".detbox");
+            const close3 = document.querySelector(".close3");
 
-            dename.textContent = tdList.todos[number].name;
-            deprior.textContent = tdList.todos[number].priority
-            dedue.textContent = tdList.todos[number].duedate
-            dedes.textContent = tdList.todos[number].description
-            denote.textContent = tdList.todos[number].notes
+            detbox.showModal();
+
+            const pardiv = detail.parentNode;
+            const chidiv = pardiv.querySelector("div");
+            let number1 = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent));
+
+            dename.textContent = tdList.todos[number1].name;
+            deprior.textContent = tdList.todos[number1].priority;
+            dedue.textContent = tdList.todos[number1].duedate;
+            dedes.textContent = tdList.todos[number1].description;
+            denote.textContent = tdList.todos[number1].notes;
+
+            close3.addEventListener("click", () => {
+                detbox.close();
+            })
         })
 
         const delBox = document.createElement("span");
@@ -61,8 +72,8 @@ class Content {
             uiObj.content.removeChild(pardiv);
 
             const chidiv = pardiv.querySelector("div");
-            let number = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent) )
-            tdList.deleteTodos(number);
+            let number2 = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent) )
+            tdList.deleteTodos(number2);
         })
 
         const cpbtn = document.createElement("div");
@@ -78,7 +89,7 @@ class Content {
 
         uiObj.num ++;
 
-        console.log(uiObj.num)
+        // console.log(uiObj.num)
         return uiObj.num
     }   
 
@@ -129,10 +140,6 @@ class Content {
             tdialog.close();
         })
     }
-
-    // detail() {
-
-    // }
 }
 
 export { Content };
