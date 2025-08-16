@@ -96,6 +96,7 @@ add.addEventListener("click", () => {
         // Pl Content UI
         const plContent = new Content();
         const plCui = plContent.contentUi();
+        plCui.content.innerHTML = "";
         plContent.todoBox(plCui, newProject);
         const plNds = plContent.inputNodes();
         plContent.eventHandler(plContent, plCui, plNds, newProject);
@@ -132,8 +133,8 @@ const gnContent = new Content();
 gnbtn.addEventListener("click", () => {
     // general Content UI
     const gnCui = gnContent.contentUi();
+    gnCui.content.innerHTML = ""
     gnContent.todoBox(gnCui, gnList);
     const gnNds = gnContent.inputNodes();
     gnContent.eventHandler(gnContent, gnCui, gnNds, gnList);
 })
-

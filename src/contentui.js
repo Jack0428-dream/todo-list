@@ -26,6 +26,17 @@ class Content {
         checkbox.setAttribute("id", id);
         checkbox.setAttribute('type','checkbox');
         checkbox.setAttribute('name', 'check');
+        checkbox.addEventListener("click", () => {
+            const pardiv = chbox.parentNode;
+            const chidiv = pardiv.querySelector("div");
+            let checked = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent));
+
+            if ( tdList.todos[checked].done === false ) {
+                tdList.todos[checked].done = true;
+            } else if ( tdList.todos[checked].done === true ) {
+                tdList.todos[checked].done = false
+            }
+        })
 
         const label = document.createElement("label");
         label.classList.add("tgl-btn");

@@ -5,6 +5,7 @@ class todolist {
         this.duedate = duedate,
         this.description = description,
         this.notes = notes;
+        this.done = false;
     }
 
     // delete todo
