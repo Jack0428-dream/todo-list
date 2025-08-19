@@ -30,4 +30,23 @@ function showingaffirmations() {
     return affirmations[number];
 }
 
-export { showingaffirmations };
+// header 
+// showing affirmation
+const header = document.querySelector("#header");
+
+header.textContent = "Your mantra for Today: " + showingaffirmations();
+
+// box 
+// adding todo 
+const container = document.querySelector(".container");
+const content = document.querySelector("#content");
+
+const box = document.createElement("div");
+box.setAttribute("id", "box");
+
+container.insertBefore(box, content);
+
+const cpbtn = document.createElement("div");
+cpbtn.classList.add("cpbtn");
+box.appendChild(cpbtn);
+

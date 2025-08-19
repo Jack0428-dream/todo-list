@@ -4,7 +4,7 @@ import "./content.css";
 import "./checkbox.css";
 import "./project.js";
 import "./todo_list.js";
-import "./affirmation.js";
+import "./header_box.js";
 import "./sidebarui.js";
 import "./contentui.js";
 

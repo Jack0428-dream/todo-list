@@ -1,12 +1,5 @@
-import { showingaffirmations } from "./affirmation.js";
 import { General, Project, projectList } from "./project.js";
 import { Content } from "./contentui.js"
-
-// header 
-// showing affirmation
-const header = document.querySelector("#header");
-
-header.textContent = "Your mantra for Today: " + showingaffirmations();
 
 // sidebar
 // projec + , general, project lists
@@ -92,19 +85,19 @@ add.addEventListener("click", () => {
 
     //showing todo list & deleting project list
     // showing todo list 
-    pbtn1.addEventListener("click", () => {
-        // Pl Content UI
-        const plContent = new Content();
-        const plCui = plContent.contentUi();
-        plCui.content.innerHTML = "";
-        plContent.todoBox(plCui, newProject);
-        const plNds = plContent.inputNodes();
-        plContent.eventHandler(plContent, plCui, plNds, newProject);
+    // pbtn1.addEventListener("click", () => {
+    //     // Pl Content UI
+    //     const plContent = new Content();
+    //     const plCui = plContent.contentUi();
+    //     plCui.content.innerHTML = "";
+    //     plContent.todoBox(plCui, newProject);
+    //     const plNds = plContent.inputNodes();
+    //     plContent.eventHandler(plContent, plCui, plNds, newProject);
 
-        // // Saving Plinfo
-        // const plTodo = new todolist(nameIn.value, priorIn.value, dueIn.value, desIn.value, notesIn.value);
-        // newProject.addTodos(plTodo);
-    })
+    //     // // Saving Plinfo
+    //     // const plTodo = new todolist(nameIn.value, priorIn.value, dueIn.value, desIn.value, notesIn.value);
+    //     // newProject.addTodos(plTodo);
+    // })
 
 
     pbtn2.addEventListener("click", () => {
@@ -126,15 +119,15 @@ add.addEventListener("click", () => {
     // console.log(nPlist.projectList);
 })
 
-const gnbtn = document.querySelector(".plusbox2");
-const gnList = new General();
-const gnContent = new Content();
+// const gnbtn = document.querySelector(".plusbox2");
+// const gnList = new General();
+// const gnContent = new Content();
 
-gnbtn.addEventListener("click", () => {
-    // general Content UI
-    const gnCui = gnContent.contentUi();
-    gnCui.content.innerHTML = ""
-    gnContent.todoBox(gnCui, gnList);
-    const gnNds = gnContent.inputNodes();
-    gnContent.eventHandler(gnContent, gnCui, gnNds, gnList);
-})
+// gnbtn.addEventListener("click", () => {
+//     // general Content UI
+//     const gnCui = gnContent.contentUi();
+//     gnCui.content.innerHTML = ""
+//     gnContent.todoBox(gnCui, gnList);
+//     const gnNds = gnContent.inputNodes();
+//     gnContent.eventHandler(gnContent, gnCui, gnNds, gnList);
+// })

@@ -82,3 +82,15 @@
     width: 500px;
 }
 
+
+#box {
+    background-color: bisque;
+    display: flex;
+    margin-top: 20px;
+    border: #ffffff solid 8px;
+    border-radius: 10px;
+    width: 95%;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+}

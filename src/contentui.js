@@ -15,7 +15,8 @@ class Content {
 
         const tdContent = document.createElement("div");
         tdContent.classList.add("td"+(uiObj.num));
-
+        
+        // done checkbox
         const id = "cb5"+(uiObj.num);
 
         const chbox = document.createElement("span");
@@ -76,6 +77,7 @@ class Content {
             })
         })
 
+        // delete box and delete events
         const delBox = document.createElement("span");
         delBox.classList.add("delbox");
         delBox.addEventListener("click", () => {
@@ -87,14 +89,15 @@ class Content {
             tdList.deleteTodos(number2);
         })
 
-        const cpbtn = document.createElement("div");
-        cpbtn.classList.add("cpbtn");
+        // button that connecte with the add dialog
+        // const cpbtn = document.createElement("div");
+        // cpbtn.classList.add("cpbtn");
 
         
         uiObj.content.appendChild(todo);
         todo.appendChild(chbox);
         todo.appendChild(tdContent);
-        tdContent.appendChild(cpbtn);
+        // tdContent.appendChild(cpbtn);
         todo.appendChild(detail);
         todo.appendChild(delBox);
 
