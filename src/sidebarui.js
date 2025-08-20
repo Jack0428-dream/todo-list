@@ -82,13 +82,12 @@ add.addEventListener("click", () => {
 
         // showing todos in array if there are todos
         if ( newProject.todos.length > 0 ) {
-            const tdbox = document.querySelector(".todo");
-            const conbox = tdbox.querySelector("div");
             const pjarr = newProject.todos;
 
-            for (let i = 0; i <= pjarr.length; i++) {
-                plContent.todoBox(plCui, newProject);
-                conbox.textContent = pjarr.name + ", " + pjarr.duedate + ", Priority: " + pjarr.priority; 
+            for (let i = 0; i < pjarr.length; i++) {
+                const tdbox = plContent.todoBox(plCui, newProject).todo;
+                const conbox = tdbox.querySelector("div");
+                conbox.textContent = pjarr[i].name + ", " + pjarr[i].duedate + ", Priority: " + pjarr[i].priority; 
             }
         }
     })

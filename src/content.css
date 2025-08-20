@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 800px;
+    height: 500px;
 }
 
 .todo {

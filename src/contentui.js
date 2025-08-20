@@ -105,11 +105,13 @@ class Content {
         // tdContent.appendChild(cpbtn);
         todo.appendChild(detail);
         todo.appendChild(delBox);
+        
+        uiObj.num++;
 
-        uiObj.num ++;
+        let chnum = uiObj.num;
 
         // console.log(uiObj.num)
-        return uiObj.num
+        return { chnum, todo }
     }   
 
     // connection to inputs 
@@ -125,7 +127,8 @@ class Content {
 
     // putting todo information into the tdcontent div
     tdContent(cls, uiObj, nds, tdList) {
-        let clnum = cls.todoBox(uiObj, tdList);
+        let clnum = cls.todoBox(uiObj, tdList).chnum;
+        console.log(clnum); 
         const todoCon = document.querySelector('.td'+(clnum-1));
         todoCon.textContent = nds.nameIn.value+ ", " + nds.dueIn.value + ", Prority:" + nds.priorIn.value;
     }
