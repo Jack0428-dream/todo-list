@@ -1,17 +1,3 @@
-class General {
-    constructor() {
-        this.todos = [];
-    }
-
-    addTodos(todo) { 
-        this.todos.push(todo);
-    }
-
-    deleteTodos(index) {
-        this.todos.splice(index, 1);
-    }
-}
-
 class Project {
     constructor(title, deadline) {
         this.title = title,
@@ -42,4 +28,4 @@ class projectList {
     }
 }
 
-export { General, Project, projectList }
+export { Project, projectList }

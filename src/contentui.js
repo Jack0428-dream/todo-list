@@ -10,9 +10,11 @@ class Content {
     }
 
     todoBox(uiObj, tdList) {
+        //todo box
         const todo = document.createElement("div");
         todo.classList.add("todo");
 
+        // todo content's box
         const tdContent = document.createElement("div");
         tdContent.classList.add("td"+(uiObj.num));
         
@@ -27,6 +29,8 @@ class Content {
         checkbox.setAttribute("id", id);
         checkbox.setAttribute('type','checkbox');
         checkbox.setAttribute('name', 'check');
+        // checkbox event when user click the button
+        // it save the property of done
         checkbox.addEventListener("click", () => {
             const pardiv = chbox.parentNode;
             const chidiv = pardiv.querySelector("div");
@@ -48,6 +52,7 @@ class Content {
         chbox.appendChild(label);
 
         // nodes for detailbox
+        // when user hit the detail box it retrieves the data
         const dename = document.querySelector(".dename");
         const deprior = document.querySelector(".deprior");
         const dedue = document.querySelector(".dedue");
@@ -107,6 +112,7 @@ class Content {
         return uiObj.num
     }   
 
+    // connection to inputs 
     inputNodes() {
         const nameIn = document.querySelector("#name");
         const priorIn = document.querySelector("#priority");
@@ -117,6 +123,7 @@ class Content {
         return { nameIn, priorIn, dueIn, desIn, notesIn };
     }
 
+    // putting todo information into the tdcontent div
     tdContent(cls, uiObj, nds, tdList) {
         let clnum = cls.todoBox(uiObj, tdList);
         const todoCon = document.querySelector('.td'+(clnum-1));
@@ -142,6 +149,7 @@ class Content {
         // adding information of todo
         plusTodo.addEventListener("click", () => { 
             cls.tdContent(cls, uiObj, nds, tdList);
+
             const todo = new todolist(nds.nameIn.value, nds.priorIn.value, nds.dueIn.value, nds.desIn.value, nds.notesIn.value);
             tdList.addTodos(todo);
 

@@ -1,5 +1,6 @@
-import { General, Project, projectList } from "./project.js";
+import { Project, projectList } from "./project.js";
 import { Content } from "./contentui.js"
+import { getOverlappingDaysInIntervals } from "date-fns";
 
 // sidebar
 // projec + , general, project lists
@@ -14,12 +15,6 @@ const project = document.createElement("div");
 project.classList.add("project");
 const svgp = document.querySelector(".plusbox");
 
-const gContainer = document.createElement("div");
-gContainer.classList.add("gcontainer");
-const general = document.createElement("div");
-general.classList.add("general");
-const svgg = document.querySelector(".plusbox2");
-
 const pLists = document.createElement("div");
 pLists.classList.add("plists");
 
@@ -29,16 +24,10 @@ sidebar.appendChild(pContainer);
 pContainer.appendChild(svgp);
 pContainer.appendChild(project);
 pContainer.insertBefore(project, svgp);
-sidebar.appendChild(gContainer);
-
-gContainer.appendChild(svgg);
-gContainer.appendChild(general);
-gContainer.insertBefore(general, svgg);
 sidebar.appendChild(pLists);
 
 title.textContent = "Jack's Todolists"
 project.textContent = "Project";
-general.textContent = "General";
 pLists.textContent = "Project List";
 
 // adding project to list
@@ -60,12 +49,7 @@ const deadlineIn = document.querySelector("#deadline");
 
 const add = document.querySelector("#add");
 const nPlist = new projectList();
-
-// const nameIn = document.querySelector("#name");
-// const priorIn = document.querySelector("#priority");
-// const dueIn = document.querySelector("#duedate");
-// const desIn = document.querySelector("#description");
-// const notesIn = document.querySelector("#notes");
+let toggle = false;
 
 add.addEventListener("click", () => {
     const newProject = new Project(titleIn.value, deadlineIn.value);
@@ -82,22 +66,32 @@ add.addEventListener("click", () => {
     pbtn2.classList.add("pbtn2");
     nplist.appendChild(pbtn1);
     nplist.appendChild(pbtn2);
-
     //showing todo list & deleting project list
     // showing todo list 
-    // pbtn1.addEventListener("click", () => {
-    //     // Pl Content UI
-    //     const plContent = new Content();
-    //     const plCui = plContent.contentUi();
-    //     plCui.content.innerHTML = "";
-    //     plContent.todoBox(plCui, newProject);
-    //     const plNds = plContent.inputNodes();
-    //     plContent.eventHandler(plContent, plCui, plNds, newProject);
+    pbtn1.addEventListener("click", () => {
+        // Pl Content UI
+        const plContent = new Content();
+        const plCui = plContent.contentUi();
+        plCui.content.innerHTML = "";
+        const plNds = plContent.inputNodes();
+        
+        if ( toggle === false ) {
+            plContent.eventHandler(plContent, plCui, plNds, newProject); 
+            toggle = true;           
+        }
 
-    //     // // Saving Plinfo
-    //     // const plTodo = new todolist(nameIn.value, priorIn.value, dueIn.value, desIn.value, notesIn.value);
-    //     // newProject.addTodos(plTodo);
-    // })
+        // showing todos in array if there are todos
+        if ( newProject.todos.length > 0 ) {
+            const tdbox = document.querySelector(".todo");
+            const conbox = tdbox.querySelector("div");
+            const pjarr = newProject.todos;
+
+            for (let i = 0; i <= pjarr.length; i++) {
+                plContent.todoBox(plCui, newProject);
+                conbox.textContent = pjarr.name + ", " + pjarr.duedate + ", Priority: " + pjarr.priority; 
+            }
+        }
+    })
 
 
     pbtn2.addEventListener("click", () => {
@@ -118,16 +112,3 @@ add.addEventListener("click", () => {
     dialog.close();
     // console.log(nPlist.projectList);
 })
-
-// const gnbtn = document.querySelector(".plusbox2");
-// const gnList = new General();
-// const gnContent = new Content();
-
-// gnbtn.addEventListener("click", () => {
-//     // general Content UI
-//     const gnCui = gnContent.contentUi();
-//     gnCui.content.innerHTML = ""
-//     gnContent.todoBox(gnCui, gnList);
-//     const gnNds = gnContent.inputNodes();
-//     gnContent.eventHandler(gnContent, gnCui, gnNds, gnList);
-// })
