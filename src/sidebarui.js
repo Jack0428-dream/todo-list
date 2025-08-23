@@ -1,6 +1,6 @@
 import { Project, projectList } from "./project.js";
 import { Content } from "./contentui.js"
-import { getOverlappingDaysInIntervals } from "date-fns";
+import { populateStorageTodo } from "./index.js";
 
 // sidebar
 // projec + , general, project lists
@@ -79,17 +79,21 @@ add.addEventListener("click", () => {
             plContent.eventHandler(plContent, plCui, plNds, newProject); 
             toggle = true;           
         }
+        
+        const curArr = populateStorageTodo(newProject);
 
         // showing todos in array if there are todos
-        if ( newProject.todos.length > 0 ) {
-            const pjarr = newProject.todos;
-
+        if ( curArr.length > 0 ) {
+            const pjarr = curArr;
+           
             for (let i = 0; i < pjarr.length; i++) {
                 const tdbox = plContent.todoBox(plCui, newProject).todo;
                 const conbox = tdbox.querySelector("div");
                 conbox.textContent = pjarr[i].name + ", " + pjarr[i].duedate + ", Priority: " + pjarr[i].priority; 
             }
         }
+
+
     })
 
 
