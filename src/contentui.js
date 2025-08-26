@@ -1,4 +1,5 @@
 import { todolist } from "./todo_list";
+import { saveTodos } from "./index.js";
 
 class Content {
     contentUi() {
@@ -155,6 +156,7 @@ class Content {
 
             const todo = new todolist(nds.nameIn.value, nds.priorIn.value, nds.dueIn.value, nds.desIn.value, nds.notesIn.value);
             tdList.addTodos(todo);
+            saveTodos(tdList.todos);
 
             nds.nameIn.value = "";
             nds.priorIn.value = "";

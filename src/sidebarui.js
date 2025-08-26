@@ -1,6 +1,6 @@
 import { Project, projectList } from "./project.js";
 import { Content } from "./contentui.js"
-import { populateStorageTodo } from "./index.js";
+import { loadTodos, savePlist, loadPlist} from "./index.js";
 
 // sidebar
 // projec + , general, project lists
@@ -55,6 +55,7 @@ add.addEventListener("click", () => {
     const newProject = new Project(titleIn.value, deadlineIn.value);
 
     nPlist.addProject(newProject);
+    savePlist(nPlist.projectList);
 
     const nplist = document.createElement("div");
     pLists.appendChild(nplist);
@@ -79,23 +80,16 @@ add.addEventListener("click", () => {
             plContent.eventHandler(plContent, plCui, plNds, newProject); 
             toggle = true;           
         }
-        
-        const curArr = populateStorageTodo(newProject);
 
-        // showing todos in array if there are todos
-        if ( curArr.length > 0 ) {
-            const pjarr = curArr;
-           
-            for (let i = 0; i < pjarr.length; i++) {
+        const pjArr = loadTodos();
+        if ( pjArr.length > 0) {
+            for (let i = 0; i < pjArr.length; i++ ) {
                 const tdbox = plContent.todoBox(plCui, newProject).todo;
                 const conbox = tdbox.querySelector("div");
-                conbox.textContent = pjarr[i].name + ", " + pjarr[i].duedate + ", Priority: " + pjarr[i].priority; 
+                conbox.textContent = pjArr[i].name + ", " + pjArr[i].duedate + ", Priority: " + pjArr[i].priority; 
             }
         }
-
-
     })
-
 
     pbtn2.addEventListener("click", () => {
         // delete div (interface)
@@ -115,3 +109,4 @@ add.addEventListener("click", () => {
     dialog.close();
     // console.log(nPlist.projectList);
 })
+

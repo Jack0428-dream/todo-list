@@ -35,19 +35,22 @@ if (storageAvailable("localStorage")) {
 
 // storing the data 
 // todos and project list
-function populateStorageTodo(array) {
-    // get an array as a parameter then 
-    // change it to string 
-    // then use getItem and use the array to the function so that 
-    // when user retrieving the data, they can get them from the array.
-    // project list as well
-    // and before that project list needs to be showing up by array's value
-
+function saveTodos(array) {
     localStorage.setItem('todos', JSON.stringify(array));
-
-    const storedArr = localStorage.getItem('todos');
-    const currentArr = JSON.parse(storedArr);
-    return { currentArr };
 }
 
-export { populateStorageTodo };
+function loadTodos() {
+  const stored = localStorage.getItem("todos");
+  return stored ? JSON.parse(stored) : [];
+}
+
+function savePlist(arr) {
+  localStorage.setItem('list', JSON.stringify(arr));
+}
+
+function loadPlist() {
+  const storedL = localStorage.getItem("list");
+  return storedL ? JSON.parse(storedL) : [];
+}
+
+export { saveTodos, loadTodos, savePlist, loadPlist }
