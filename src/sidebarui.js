@@ -51,22 +51,28 @@ const add = document.querySelector("#add");
 const nPlist = new projectList();
 let toggle = false;
 
-add.addEventListener("click", () => {
-    const newProject = new Project(titleIn.value, deadlineIn.value);
-
-    nPlist.addProject(newProject);
-    savePlist(nPlist.projectList);
-
+function listbox(listarr) {
     const nplist = document.createElement("div");
     pLists.appendChild(nplist);
-    nplist.textContent = newProject.title + ", " + newProject.deadline;
-    
+    nplist.textContent = listarr.title + ", " + listarr.deadline;
+
     const pbtn1 = document.createElement("span");
     const pbtn2 = document.createElement("span");
     pbtn1.classList.add("pbtn1");
     pbtn2.classList.add("pbtn2");
     nplist.appendChild(pbtn1);
     nplist.appendChild(pbtn2);
+}
+ 
+add.addEventListener("click", () => {
+    const newProject = new Project(titleIn.value, deadlineIn.value);
+
+    nPlist.addProject(newProject);
+    savePlist(nPlist.projectList);
+
+    listbox(newProject);
+    const pbtn1 = document.querySelector(".pbtn1");
+    const pbtn2 = document.querySelector(".pbtn2");
     //showing todo list & deleting project list
     // showing todo list 
     pbtn1.addEventListener("click", () => {
@@ -109,4 +115,16 @@ add.addEventListener("click", () => {
     dialog.close();
     // console.log(nPlist.projectList);
 })
+
+function retrieveList() {
+    const plArr = loadPlist();
+    if ( plArr.length > 0 ) {
+        for ( let i = 0; i < plArr.length; i++ ) {
+            listbox(plArr[i]);
+        }
+    }   
+
+    // eventhandler function add 
+
+}
 
