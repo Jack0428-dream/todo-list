@@ -1,6 +1,6 @@
 import { Project, projectList } from "./project.js";
 import { Content } from "./contentui.js"
-import { loadTodos, savePlist, loadPlist} from "./index.js";
+import { loadTodos, savePlist, loadPlist, saveTodos} from "./index.js";
 
 // sidebar
 // projec + , general, project lists
@@ -76,6 +76,18 @@ function listbox(listarr) {
                 plContent.eventHandler(plContent, plCui, plNds, listarr);
                 toggle = true;
             }
+
+            if ((listarr.todos).length > 0) {
+                const pjArr = listarr.todos;
+                const retArr = loadTodos(pjArr);
+                
+                for (let i = 0; i < retArr.length; i++) {
+                    let index = plContent.todoBox(plCui, retArr).chnum;
+                    const tdCon = document.querySelector('.td'+(index-1));
+                    tdCon.textContent = retArr[i].name+", "+retArr[i].duedate+", Priority:"+retArr[i].priority;
+                }
+                
+            }
         }
 
         if (e.target.classList.contains('pbtn2')) {
@@ -95,7 +107,7 @@ add.addEventListener("click", () => {
     nPlist.addProject(newProject);
 
     listbox(newProject);
-
+    
     titleIn.value = "";
     deadlineIn.value = "";
     dialog.close();
