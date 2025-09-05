@@ -62,53 +62,39 @@ function listbox(listarr) {
     pbtn2.classList.add("pbtn2");
     nplist.appendChild(pbtn1);
     nplist.appendChild(pbtn2);
+
+    // using event delegation attatch event right away
+    nplist.addEventListener("click", (e) => {
+        if (e.target.classList.contains('pbtn1')) {
+            console.log("pbtn1 is clicked");
+            const plContent = new Content();
+            const plCui = plContent.contentUi();
+            plCui.content.innerHTML = "";
+            const plNds = plContent.inputNodes();
+
+            if ( toggle === false ) {
+                plContent.eventHandler(plContent, plCui, plNds, listarr);
+                toggle = true;
+            }
+        }
+
+        if (e.target.classList.contains('pbtn2')) {
+            const parDiv = e.target.parentNode;
+            console.log('pbtn2 clicked');
+            let number = nPlist.projectList.findIndex(item =>(item.title + ', '+item.deadline) === parDiv.textContent);
+            nPlist.deleteProject(number);
+            pLists.removeChild(parDiv);
+        }
+    })
+
 }
  
 add.addEventListener("click", () => {
     const newProject = new Project(titleIn.value, deadlineIn.value);
 
     nPlist.addProject(newProject);
-    savePlist(nPlist.projectList);
 
     listbox(newProject);
-    const pbtn1 = document.querySelector(".pbtn1");
-    const pbtn2 = document.querySelector(".pbtn2");
-    //showing todo list & deleting project list
-    // showing todo list 
-    pbtn1.addEventListener("click", () => {
-        // Pl Content UI
-        const plContent = new Content();
-        const plCui = plContent.contentUi();
-        plCui.content.innerHTML = "";
-        const plNds = plContent.inputNodes();
-        
-        if ( toggle === false ) {
-            plContent.eventHandler(plContent, plCui, plNds, newProject); 
-            toggle = true;           
-        }
-
-        const pjArr = loadTodos();
-        if ( pjArr.length > 0) {
-            for (let i = 0; i < pjArr.length; i++ ) {
-                const tdbox = plContent.todoBox(plCui, newProject).todo;
-                const conbox = tdbox.querySelector("div");
-                conbox.textContent = pjArr[i].name + ", " + pjArr[i].duedate + ", Priority: " + pjArr[i].priority; 
-            }
-        }
-    })
-
-    pbtn2.addEventListener("click", () => {
-        // delete div (interface)
-        const parDiv = pbtn2.parentNode;
-
-        // delete the data inside the array
-        let number = nPlist.projectList.findIndex(item =>(item.title + ', '+item.deadline) === parDiv.textContent)
-        // console.log(number);
-        nPlist.deleteProject(number);
-
-        pLists.removeChild(parDiv);
-        // console.log(nPlist.projectList);
-    })
 
     titleIn.value = "";
     deadlineIn.value = "";

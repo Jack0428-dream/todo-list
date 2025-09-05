@@ -35,15 +35,13 @@ if (storageAvailable("localStorage")) {
 
 // storing the data 
 // todos and project list
- 
+
 function saveTodos(array) {
-    localStorage.setItem('todos'+key, JSON.stringify(array));
-    let name = 'todos'+key;
-    return name ;
+    localStorage.setItem('todos', JSON.stringify(array));
 }
 
-function loadTodos(keyname) {
-  const stored = localStorage.getItem(keyname);
+function loadTodos(array) {
+  const stored = localStorage.getItem('todos');
   return stored ? JSON.parse(stored) : [];
 }
 
