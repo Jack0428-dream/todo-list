@@ -1,5 +1,5 @@
+import { savePlist } from ".";
 import { todolist } from "./todo_list";
-import { saveTodos } from "./index.js";
 
 class Content {
     contentUi() {
@@ -135,7 +135,7 @@ class Content {
     }
 
     // showing todo dialog
-    eventHandler(cls, uiObj, nds, tdList) {
+    eventHandler(cls, uiObj, nds, tdList, prlist) {
         const tdialog = document.querySelector(".tdialog");
         const addTd = document.querySelector(".cpbtn");
         const close2 = document.querySelector(".close2");
@@ -156,7 +156,26 @@ class Content {
 
             const todo = new todolist(nds.nameIn.value, nds.priorIn.value, nds.dueIn.value, nds.desIn.value, nds.notesIn.value);
             tdList.addTodos(todo);
-            saveTodos(tdList.todos);
+            savePlist(prlist);
+
+            nds.nameIn.value = "";
+            nds.priorIn.value = "";
+            nds.dueIn.value = "";
+            nds.desIn.value= "";
+            nds.notesIn.value = "";
+
+            tdialog.close();
+        })
+
+        plusTodo.replaceWith(plusTodo.cloneNode(true));
+        const newPlus = document.querySelector("#plus");
+
+        newPlus.addEventListener("click", () => {
+            cls.tdContent(cls, uiObj, nds, tdList);
+
+            const todo = new todolist(nds.nameIn.value, nds.priorIn.value, nds.dueIn.value, nds.desIn.value, nds.notesIn.value);
+            tdList.addTodos(todo);
+            savePlist(prlist);
 
             nds.nameIn.value = "";
             nds.priorIn.value = "";

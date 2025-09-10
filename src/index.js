@@ -36,14 +36,14 @@ if (storageAvailable("localStorage")) {
 // storing the data 
 // todos and project list
 
-function saveTodos(array) {
-    localStorage.setItem(array[0].name, JSON.stringify(array));
-}
+// function saveTodos(array) {
+//     localStorage.setItem(array[0].name, JSON.stringify(array));
+// }
 
-function loadTodos(array) {
-  const stored = localStorage.getItem(array[0].name);
-  return stored ? JSON.parse(stored) : [];
-}
+// function loadTodos(array) {
+//   const stored = localStorage.getItem(array[0].name);
+//   return stored ? JSON.parse(stored) : [];
+// }
 
 function savePlist(arr) {
   localStorage.setItem('list', JSON.stringify(arr));
@@ -54,4 +54,4 @@ function loadPlist() {
   return storedL ? JSON.parse(storedL) : [];
 }
 
-export { saveTodos, loadTodos, savePlist, loadPlist }
+export { savePlist, loadPlist }

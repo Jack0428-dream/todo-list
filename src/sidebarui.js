@@ -49,7 +49,6 @@ const deadlineIn = document.querySelector("#deadline");
 
 const add = document.querySelector("#add");
 const nPlist = new projectList();
-let toggle = false;
 
 function listbox(listarr) {
     const nplist = document.createElement("div");
@@ -72,29 +71,31 @@ function listbox(listarr) {
             plCui.content.innerHTML = "";
             const plNds = plContent.inputNodes();
 
-            if ( toggle === false ) {
-                plContent.eventHandler(plContent, plCui, plNds, listarr);
-                toggle = true;
-            }
+            plContent.eventHandler(plContent, plCui, plNds, listarr, nPlist);
 
             if ((listarr.todos).length > 0) {
-                const pjArr = listarr.todos;
-                const retArr = loadTodos(pjArr);
-                
+                // console.log(nPlist);
+                const pjArr = loadPlist();
+                // console.log(pjArr);
+                let result = pjArr.projectList.findIndex(item => (item.title + ", " + item.deadline) === nplist.textContent);
+                // console.log(result);
+                const pjObj = pjArr.projectList[result];
+                // console.log(pjObj);
+                const retArr = pjObj.todos;
+
                 for (let i = 0; i < retArr.length; i++) {
                     let index = plContent.todoBox(plCui, retArr).chnum;
                     const tdCon = document.querySelector('.td'+(index-1));
                     tdCon.textContent = retArr[i].name+", "+retArr[i].duedate+", Priority:"+retArr[i].priority;
                 }
-                
             }
         }
 
         if (e.target.classList.contains('pbtn2')) {
             const parDiv = e.target.parentNode;
-            console.log('pbtn2 clicked');
             let number = nPlist.projectList.findIndex(item =>(item.title + ', '+item.deadline) === parDiv.textContent);
             nPlist.deleteProject(number);
+            savePlist(nPlist);
             pLists.removeChild(parDiv);
         }
     })
@@ -103,8 +104,12 @@ function listbox(listarr) {
  
 add.addEventListener("click", () => {
     const newProject = new Project(titleIn.value, deadlineIn.value);
+    console.log(newProject);
 
     nPlist.addProject(newProject);
+    console.log(nPlist);
+
+    savePlist(nPlist);
 
     listbox(newProject);
     
