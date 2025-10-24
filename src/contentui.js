@@ -92,7 +92,7 @@ class Content {
 
             const chidiv = pardiv.querySelector("div");
             let number2 = tdList.todos.findIndex(user => ((user.name + ", " + user.duedate + ", Prority:" + user.priority) === chidiv.textContent) )
-            tdList.deleteTodos(number2);
+            tdList.deleteTodos(tdList.todos, number2);
         })
 
         // button that connecte with the add dialog
